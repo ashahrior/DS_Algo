@@ -79,6 +79,9 @@ class DoubleLinkedList:
             vals.append(node.value)
             node = node.next
         return str(', '.join(str(value) for value in vals))
+
+
+
 '''
 if __name__ == "__main__":
     ml = DoubleLinkedList()
