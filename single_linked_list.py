@@ -12,7 +12,7 @@ class SingleLinkedList:
 
     def add(self, value):
         node = Node(value)
-        if self.tail is None:
+        if self.head is None:
             self.head = node
             self.tail = node
             self.size += 1

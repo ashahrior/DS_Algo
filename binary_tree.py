@@ -65,18 +65,55 @@ class BinaryTree:
                     nodes.push(node.left)
         return False
 
-'''
+
+def isSubTreeLesser(root, val):
+    if root is None:
+        return True
+    if root.value <= val and \
+            isSubTreeLesser(root.left, val) and \
+            isSubTreeLesser(root.right, val):
+        return True
+    return False
+
+
+def isSubTreeGreater(root, val):
+    if root is None:
+        return True
+    if root.value > val and \
+            isSubTreeGreater(root.left, val) and \
+            isSubTreeGreater(root.right, val):
+        return True
+    return False
+
+
+def isBSTutil(root, minVal, maxVal):
+    if root is None:
+        return True
+    # too many repetitive recursion calls
+    # if isSubTreeLesser(root.left, root.value) and \
+    # isSubTreeGreater(root.right, root.value) and \
+    # isBST(root.left) and isBST(root.right):
+    #     return True
+
+    if root.value > minVal and root.value < maxVal \
+            and isBSTutil(root.left, minVal, root.value) \
+            and isBSTutil(root.right, root.value, maxVal):
+        return True
+
+    return False
+
+
 if __name__ == "__main__":
     
     tree = BinaryTree()
 
     s = [random.randint(1, 100) for x in range(1, 10)]
+    #s = [12, 5, 15, 3, 7, 13, 17, 1, 9, 14, 20, 8, 11, 18]
     for x in s:
         tree.insert(x)
     print(tree)
-    tree.in_order()
+    #tree.in_order()
     #print_tree(tree.root,0)
-    check = random.randint(1, 100)
-    print('Checking for %d - %s' % (check, tree.contains(check)))
-'''
-
+    #check = random.randint(1, 100)
+    #print('Checking for %d - %s' % (check, tree.contains(check)))
+    print(isBSTutil(tree.root, -1000, 1000))

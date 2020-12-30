@@ -3,5 +3,7 @@ tempCodeRunnerFile.py
 __pycache__
 misc.txt
 test.py
+\test_dir
+\leetcode
 *.exe
 
